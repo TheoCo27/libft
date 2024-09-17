@@ -6,41 +6,33 @@
 /*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:48:33 by tcohen            #+#    #+#             */
-/*   Updated: 2024/06/12 16:40:14 by tcohen           ###   ########.fr       */
+/*   Updated: 2024/08/21 15:51:00 by tcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void	*ft_free_all(char **tab)
-{
-	size_t	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-	return (NULL);
-}
 
 static size_t	ft_wrdcount(const char *str, char c)
 {
 	size_t	i;
 	size_t	count;
 
-	i = 0;
 	count = 0;
-	if (str[i] != c && str[i] != '\0')
-		count++;
+	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 	{
-		if ((str[i - 1] == c) && (str[i] != c))
-			count++;
-		i++;
+		while (str[i] && str[i] == c)
+			i++;
+		while (str[i] && str[i] != c)
+			i++;
+		count++;
 	}
+	if (i - 1 < 0)
+		return (0);
+	if (str[i - 1] == c)
+		count--;
 	return (count);
 }
 
@@ -92,7 +84,7 @@ char	**ft_split(const char *s, char c)
 	w_count = 0;
 	while (s[i])
 	{
-		if ((s[i] != c && s[i - 1] == c) || (i == 0 && s[i] != c))
+		if ((i > 0 && s[i] != c && s[i - 1] == c) || (i == 0 && s[i] != c))
 		{
 			tab[w_count] = make_word(s, c, i);
 			if (!tab[w_count])

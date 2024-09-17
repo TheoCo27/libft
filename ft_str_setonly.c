@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_str_setonly.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 19:21:15 by tcohen            #+#    #+#             */
-/*   Updated: 2024/09/14 20:36:21 by tcohen           ###   ########.fr       */
+/*   Created: 2024/09/08 19:00:41 by tcohen            #+#    #+#             */
+/*   Updated: 2024/09/16 16:45:01 by tcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_str_setonly(char *str, char *set)
 {
 	size_t	i;
+	size_t	j;
+	int		check;
 
-	if (!s)
-		return (0);
 	i = 0;
-	while (s[i])
+	check = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (set[j])
+		{
+			if (set[j] != str[i])
+				check = 1;
+			if (set[j] == str[i])
+			{
+				check = 0;
+				break ;
+			}
+			j++;
+		}
+		if (check == 1)
+			return (1);
 		i++;
-	return (i);
+	}
+	return (0);
 }

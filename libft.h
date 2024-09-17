@@ -6,7 +6,7 @@
 /*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 21:15:24 by tcohen            #+#    #+#             */
-/*   Updated: 2024/06/12 16:49:27 by tcohen           ###   ########.fr       */
+/*   Updated: 2024/09/16 16:48:53 by tcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,25 @@
 # include "unistd.h"
 # include "stdio.h"
 # include "stdlib.h"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
+typedef struct s_index
+{
+	size_t	i;
+	size_t	j;
+	size_t	k;
+	size_t	len;
+	size_t	check;
+}	t_index;
 
 typedef struct s_list
 {
@@ -65,4 +84,30 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+// GNL
+char	*get_next_line(int fd);
+size_t	ft_checklen(char *str, char str_line);
+char	*ft_strcpy(char *dest, char *src);
+size_t	ft_check_new_line(char *str);
+char	*ft_clean_line(char *line);
+//Add on
+int		ft_charcmp(char c, char to_cmp);
+char	*ft_strfree_s1_join(char *s1_to_free, char *s2);
+int		ft_str_setonly(char *str, char *set);
+size_t	ft_wdcount(const char *str, char c);
+void	*ft_free_all(char **tab);
+size_t	ft_tabstr_len(char **tabstr);
+char	**ft_tabstr_copy(char **tabstr);
+void	ft_print_tabstr(char **tabstr);
+int		ft_atleast_char(char *str, char c);
+int		ft_atleast_set(char *str, char *set);
+int		ft_tabatleast_char(char **tab, char c);
+int		ft_tabatleast_set(char **tab, char *set);
+void	ft_init_zero(t_index *i);
+size_t	ft_count_char(char *str, char c);
+size_t	ft_tabcount_char(char **tab, char c);
+int		ft_findchar(char *str, char c);
+t_point	ft_tab_findchar(char **tab, char c);
+void	ft_init_t_point(t_point *index);
+
 #endif

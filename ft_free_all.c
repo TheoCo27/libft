@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_free_all.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 19:21:15 by tcohen            #+#    #+#             */
-/*   Updated: 2024/09/14 20:36:21 by tcohen           ###   ########.fr       */
+/*   Created: 2024/08/19 20:03:41 by tcohen            #+#    #+#             */
+/*   Updated: 2024/08/19 20:04:14 by tcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+void	*ft_free_all(char **tab)
 {
 	size_t	i;
 
-	if (!s)
-		return (0);
 	i = 0;
-	while (s[i])
+	while (tab[i])
+	{
+		free(tab[i]);
 		i++;
-	return (i);
+	}
+	free(tab);
+	return (NULL);
 }

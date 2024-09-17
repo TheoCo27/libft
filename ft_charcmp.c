@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_charcmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 19:21:15 by tcohen            #+#    #+#             */
-/*   Updated: 2024/09/14 20:36:21 by tcohen           ###   ########.fr       */
+/*   Created: 2024/09/07 17:16:17 by tcohen            #+#    #+#             */
+/*   Updated: 2024/09/07 17:19:58 by tcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_charcmp(char c, char to_cmp)
 {
-	size_t	i;
-
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (c == to_cmp)
+		return (1);
+	return (0);
 }
