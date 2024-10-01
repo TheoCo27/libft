@@ -6,7 +6,7 @@
 /*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 21:15:24 by tcohen            #+#    #+#             */
-/*   Updated: 2024/09/16 16:48:53 by tcohen           ###   ########.fr       */
+/*   Updated: 2024/10/01 18:30:18 by tcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,14 @@ typedef struct s_index
 	size_t	check;
 }	t_index;
 
-typedef struct s_list
+#ifndef LIST
+# define LIST 
+typedef struct      s_list
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+    void            *content;
+    struct s_list   *next;
+}                   t_list;
+#endif
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
